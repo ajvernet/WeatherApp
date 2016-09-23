@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html ng-app="weather">
+    
+    <body ng-controller="WeatherController as WC">
+    
+    
+        <form ng-submit="WC.search()">
+        
+        
+            <label for="search-value">Enter Search Value: </label>
+            <input id="search-value" type="text" ng-model="WC.searchValue">
+            <input type="submit" value="search" ng-disabled="! WC.searchValue">
+        
+        
+        </form>
+        
+     
+        <div>Results: {{ WC.resultValue }}</div>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+         <script type="text/javascript">
+            angular.module('weather',[]).controller("WeatherController", function($http){
+
+            var self = this;
+                
+            this.search= function(){
+                
+                console.log("hello")
+                
+                    $http.get("/weather/search/" + self.searchValue).then(function (response)
+                                                                         
+                    {
+//                        console.log(response.data)
+                        self.resultValue = response.data
+                    })
+                }
+            })
+    </script>
+    </body>
