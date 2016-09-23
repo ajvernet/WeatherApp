@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 
 <html ng-app="weather">
+    <head>
     
+        <link rel="stylesheet" type="text/css" href="weatherStyle.css">
+    </head>
     <body ng-controller="WeatherController as WC">
     
+        <header>
+            Lazy Weather
+            
+        </header>
+        
+        <div id="sub">For people that can't spare a second to step outside....</div>
     
-        <form ng-submit="WC.search()">
+        <div id=searchBox>
+            <form id = "searchForm"  ng-submit="WC.search()">
+
+
+                <label for="search-value">Search by city: </label>
+                <input id="search-value" type="text" ng-model="WC.searchValue">
+                <input type="submit" value="search" ng-disabled="! WC.searchValue">
+
+
+            </form>
+
+
+         <div id="searchLabel">"What's it look like out there?" </div>
+            
+        <div>{{ WC.resultValue }}</div>
         
-        
-            <label for="search-value">Enter Search Value: </label>
-            <input id="search-value" type="text" ng-model="WC.searchValue">
-            <input type="submit" value="search" ng-disabled="! WC.searchValue">
-        
-        
-        </form>
-        
-     
-        <div>Results: {{ WC.resultValue }}</div>
-        
-        
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
          <script type="text/javascript">
             angular.module('weather',[]).controller("WeatherController", function($http){
@@ -33,7 +45,7 @@
                                                                          
                     {
 //                        console.log(response.data)
-                        self.resultValue = response.data
+                        self.resultValue = response.data.success[0].description
                     })
                 }
             })

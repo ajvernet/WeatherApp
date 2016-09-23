@@ -1,0 +1,44 @@
+
+
+* {
+   
+    background-color: beige
+}
+
+header {
+    
+    align-content: center;
+    text-align: center;
+    padding-top: .75em;
+    padding-bottom: .75em;
+    border-style: groove;
+    border-width: thick;
+    
+    font-size: 4.5em;
+    color: black
+}
+
+#input{
+    font-size: 1.5em;
+}
+
+#sub{
+    
+    align-content: center;
+    font-size: 2em;
+    padding-top: 1em;
+}
+
+#searchBox{
+    white-space: nowrap;
+    padding-top: 2em;
+     font-size: 1.5em;
+    
+}
+
+div{
+    
+    padding-top: 2em;
+    
+   
+}

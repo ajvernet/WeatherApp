@@ -20,12 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.InternalResourceView;
 
-
+@RestController
 @RequestMapping("/weather")
 public class WeatherController {
 
-    
-    final WeatherService service;
+
+     WeatherService service;
     
     @Autowired
     public WeatherController(WeatherService service)
@@ -35,9 +35,9 @@ public class WeatherController {
     
     @RequestMapping(value = "")
     
-    public String home()
+    public View home()
     {
-        return "/weather";
+        return new InternalResourceView("weatherfile.html");
    
     }
     
